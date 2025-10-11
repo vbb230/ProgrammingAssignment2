@@ -1,13 +1,12 @@
-## Put comments here that give an overall description of what your
+## The goal is to create and submit functions that (1) makeCacheMatrix(): creates a special "matrix" object that can store (cache) its inverse, (2)  cacheSolve(): computes the inverse of the matrix if it's not cached, or returns the cached result if it is. 
 
+## https://github.com/vbb230/ProgrammingAssignment2
 
-## Write a short comment describing this function
-# It creates a  "matrix" object that can cache its inverse.It returns a list of functions to:
-#  set and get the matrix
-#  set and get the inverse of the matrix
+## It creates a  "matrix" object that can cache its inverse.It returns a list of functions to: set and get the matrix and set and get the inverse of the matrix
 
-## makeCacheMatrix: 
-## This function creates a special "matrix" object that can cache its inverse.
+## Function 1: makeCacheMatrix: 
+## Comment: 
+## This function creates a special "matrix" object that can cache its inverse:
 
 makeCacheMatrix <- function(x = matrix()) {
   inv <- NULL
@@ -29,10 +28,10 @@ makeCacheMatrix <- function(x = matrix()) {
        getinverse = getinverse)
 }
 
-
-## cacheSolve:
+## Function 2: cacheSolve
+## Comment function 2
 ## This function computes the inverse of the special "matrix" created by makeCacheMatrix above.
-## If the inverse has already been calculated, it retrieves the cached result.
+## If the inverse has already been calculated, it retrieves the cached result. So, I need to do the following:
 
 cacheSolve <- function(x, ...) {
   inv <- x$getinverse()
@@ -49,8 +48,17 @@ cacheSolve <- function(x, ...) {
 }
 
 
+## Use example 
+# First, create a matrix
+v <- matrix(c(1, 2, 3, 4), 2, 2)
 
-m <- matrix(c(1, 2, 3, 4), 2, 2)
-cm <- makeCacheMatrix(m)
-cacheSolve(cm)
-cacheSolve(cm)  # This call should say "Getting cached inverse..."
+# Then, it is necessaru to create a special matrix object
+cachedMatrix <- makeCacheMatrix(v)
+
+# Second, it computes and caches the inverse
+cacheSolve(cachedMatrix)
+
+# Third, it retrieves cached inverse
+cacheSolve(cachedMatrix)
+
+
